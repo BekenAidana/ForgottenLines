@@ -1,0 +1,46 @@
+# =============== #
+# Unity Generated #
+# =============== #
+
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Mm]emoryCaptures/
+
+# ============ #
+# Asset Store  #
+# ============ #
+/[Aa]ssets/AssetStoreTools*
+
+# Visual Studio / JetBrains Rider files
+.vscode/
+*.csproj
+*.sln
+*.user
+*.unityproj
+*.suo
+*.tmp
+*.pidb
+*.booproj
+*.svd
+
+# Unity Cache Files
+*.pidb.meta
+*.pdb
+*.mdb
+*.opendb
+*.obj
+
+# Crash Reports
+sysinfo.txt
+
+# Other
+*.apk
+*.aab
+*.unitypackage
+
+# MacOS
+.DS_Store
