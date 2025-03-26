@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7587184356246173894}
   - component: {fileID: 7334502820067684593}
   m_Layer: 0
-  m_Name: river 1_2
+  m_Name: River
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
