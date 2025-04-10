@@ -8,16 +8,15 @@ public class LevelManager : MonoBehaviour
     public static LevelManager instance;
     private int currentLevel;
     public GameState currentState;
-    [SerializeField] private VisualEffect visualEffect;
+    [SerializeField] private ParticleSystem ps;
+    private float strengthPS = 2f;
     [SerializeField] public GameObject player;
-    private Vector3 targetPositionVFX;
-    private string currentVFXPositionName = "CurrentPosition";
-    private string targetVFXPositionName = "TargetPosition";
-    private string strengthVFXName = "Strength";
+    private Drawing targetVFX;
     private bool isActiveVFX = false;
     private Drawing selectedDrawing;
     [SerializeField] private List<GameObject> figuresInLevel;
     [SerializeField] private List<Drawing> activatedFiguresChain = new List<Drawing>();
+    ParticleSystem.ForceOverLifetimeModule forceModule;
     public float MaxX;
 
     void Awake()
@@ -30,6 +29,7 @@ public class LevelManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        forceModule = ps.forceOverLifetime;
     }
     public void StartGame(int level)
     {
@@ -42,7 +42,6 @@ public class LevelManager : MonoBehaviour
         player.GetComponent<PlayerController>().NewLevel();
         figuresInLevel = FiguresInLevels.Instance.GetFiguresForLevel(level);
         Invoke(nameof(StartLevel), 3f);
-        targetPositionVFX = Vector3.up;
     }
     void StartLevel()
     {
@@ -60,34 +59,41 @@ public class LevelManager : MonoBehaviour
 
     void Update()
     {
-        if(player!=null)
+        if(player!=null & isActiveVFX)
         {
-            if(isActiveVFX)
-            {
-                targetPositionVFX = selectedDrawing.transform.position;
-            }
             UpdateVFX();
         }
     }
 
     public void UpdateVFX()
     {
-        if (visualEffect != null)
-        {
-            visualEffect.SetVector3(targetVFXPositionName, targetPositionVFX);
-            visualEffect.SetVector3(currentVFXPositionName, player.transform.position);
-        }
+        Vector3 Force = Vector3.Normalize((targetVFX.transform.position - player.transform.position))*strengthPS;
+        forceModule.x = new ParticleSystem.MinMaxCurve(Force.x);
+        forceModule.y = new ParticleSystem.MinMaxCurve(Force.y);
+        forceModule.z = new ParticleSystem.MinMaxCurve(Force.z);
+        
     }
     private void SetStrengtVFX(float value)
     {
-        visualEffect.SetFloat(strengthVFXName, value);
+        strengthPS = value;
+    }
+
+    private void ActivateVFX(Drawing drawing)
+    {
+        if (ps != null && !isActiveVFX)
+        {
+            targetVFX = drawing;
+            isActiveVFX=true;
+            forceModule.enabled = true;
+        }
+
     }
 
     public void StopVFX()
     {
-        if (visualEffect != null && isActiveVFX)
+        if (ps != null && isActiveVFX)
         {
-            SetStrengtVFX(0);
+            forceModule.enabled = false;
             isActiveVFX=false;
         }
     }
@@ -101,15 +107,13 @@ public class LevelManager : MonoBehaviour
     {
         selectedDrawing.StopInteraction();
         selectedDrawing = null;
-        StopVFX();
     }
     public void SetSelectedDrawing(Drawing drawing)
     {
         selectedDrawing = drawing;
-        isActiveVFX=true;
-        SetStrengtVFX(2);
+        ActivateVFX(selectedDrawing);
         NewChain();
-        Invoke(nameof(StopVFX),5);
+        Invoke(nameof(StopVFX),3);
     }
     private void ResetChain()
     {
@@ -155,7 +159,6 @@ public class LevelManager : MonoBehaviour
         }
         activatedFiguresChain.Clear();
         selectedDrawing = null;
-        StopVFX();
         currentState = GameState.LevelCompleted;
         GameManager.instance?.LevelCompleted(currentLevel);
     }

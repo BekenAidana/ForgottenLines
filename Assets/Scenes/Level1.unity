@@ -1015,7 +1015,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -2862,7 +2862,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1
+      scalar: 2
       minScalar: 0.5
       maxCurve:
         serializedVersion: 2
@@ -2915,7 +2915,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.5
+      scalar: 0.1
       minScalar: 0.1
       maxCurve:
         serializedVersion: 2
@@ -3414,7 +3414,7 @@ ParticleSystem:
     angle: 25
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
-    radiusThickness: 0.48
+    radiusThickness: 0.5
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: -45}
@@ -3497,7 +3497,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 1
+      value: 1.2
       mode: 0
       spread: 0
       speed:
@@ -3616,7 +3616,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 100
+      scalar: 75
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -4046,7 +4046,7 @@ ParticleSystem:
         m_RotationOrder: 4
     separateAxes: 0
   ColorModule:
-    enabled: 0
+    enabled: 1
     gradient:
       serializedVersion: 2
       minMaxState: 1
@@ -4935,7 +4935,7 @@ ParticleSystem:
         m_RotationOrder: 4
     m_Range: {x: 0, y: 1}
   ForceModule:
-    enabled: 1
+    enabled: 0
     x:
       serializedVersion: 2
       minMaxState: 0
@@ -6565,7 +6565,7 @@ ParticleSystem:
       properties: 0
       emitProbability: 1
   LightsModule:
-    enabled: 1
+    enabled: 0
     ratio: 0
     light: {fileID: 0}
     randomDistribution: 1
@@ -7547,7 +7547,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
-  visualEffect: {fileID: 761896448}
+  ps: {fileID: 581597982}
   player: {fileID: 3979338157551635782}
   figuresInLevel: []
   activatedFiguresChain: []
@@ -7902,12 +7902,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1221149948001071411, guid: e403e5b093b874961a03626ba54014cb,
     type: 3}
   m_PrefabInstance: {fileID: 708859479}
-  m_PrefabAsset: {fileID: 0}
---- !u!2083052967 &761896448 stripped
-VisualEffect:
-  m_CorrespondingSourceObject: {fileID: 211581754989706288, guid: dc9aeed1a2fbd47ceafe9cc5e3156907,
-    type: 3}
-  m_PrefabInstance: {fileID: 3979338157551635781}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &806761145
 GameObject:
@@ -11404,7 +11398,7 @@ PrefabInstance:
     - target: {fileID: 1136020636883878812, guid: dc9aeed1a2fbd47ceafe9cc5e3156907,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2868703244167141218, guid: dc9aeed1a2fbd47ceafe9cc5e3156907,
         type: 3}
@@ -11567,6 +11561,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 7339930450983723724, guid: dc9aeed1a2fbd47ceafe9cc5e3156907,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8161530424753259189, guid: dc9aeed1a2fbd47ceafe9cc5e3156907,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -11588,7 +11587,8 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7339930450983723724, guid: dc9aeed1a2fbd47ceafe9cc5e3156907, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4142138038517926748, guid: dc9aeed1a2fbd47ceafe9cc5e3156907,
         type: 3}
