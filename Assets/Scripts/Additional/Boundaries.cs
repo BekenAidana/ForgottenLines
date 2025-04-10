@@ -74,7 +74,6 @@ public class Boundaries : MonoBehaviour
         {
             if(gameObjectName=="Player")
             {
-                Debug.Log("lol");
                 rb.constraints = RigidbodyConstraints2D.FreezeAll;
             }
             rb.velocity = Vector2.zero;

@@ -1372,7 +1372,7 @@
     "m_ObjectId": "d22d837c246649b2b08ca7cfb3141a6b",
     "m_Datas": [],
     "m_ActiveSubTarget": {
-        "m_Id": "dc1fad30df1f4f428b467db7fe32be8b"
+        "m_Id": "db6aa891a9a64f2a91cfdd20fbc75acb"
     },
     "m_AllowMaterialOverride": false,
     "m_SurfaceType": 0,
@@ -1440,7 +1440,7 @@
 {
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.Rendering.Universal.ShaderGraph.UniversalSpriteLitSubTarget",
-    "m_ObjectId": "dc1fad30df1f4f428b467db7fe32be8b"
+    "m_ObjectId": "db6aa891a9a64f2a91cfdd20fbc75acb"
 }
 
 {
